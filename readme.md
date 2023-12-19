@@ -5,9 +5,9 @@ This project is all about CICD pipeline without ArgoCD . We are going to create 
 
 ## There are two types of deployment :-
 
-1  Push Based Deployment : Changes are directly pushed on K8S cluster 
+-  Push Based Deployment : Changes are directly pushed on K8S cluster 
 
-2  Pull Based Deployment : An agent is installed on K8S cluster , that agent will monitor infra git repository & as soon as there is a new commit in infra git repo , this agent will syncs all new changes to its current environment . it compares desired state & actual state .
+-  Pull Based Deployment : An agent is installed on K8S cluster , that agent will monitor infra git repository & as soon as there is a new commit in infra git repo , this agent will syncs all new changes to its current environment . it compares desired state & actual state .
 
 ## Git Repository For application code available at below link:
 
