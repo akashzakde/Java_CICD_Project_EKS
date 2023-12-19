@@ -1,5 +1,5 @@
 
-# CICD Project without ArgoCD 
+# CICD Project without ArgoCD ( Push Based Deployment )
 
 This project is all about CICD pipeline without ArgoCD . We are going to create CICD project by simply hosting spring boot application on AWS EKS cluster . we are using push based deployment approach here . 
 
