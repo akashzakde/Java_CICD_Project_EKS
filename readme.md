@@ -1,33 +1,31 @@
 
-# CICD Project with ArgoCD
+# CICD Project without ArgoCD 
 
-This project is all about CICD pipeline with ArgoCD . We are going to create CICD project by simply hosting spring boot application on AWS EKS cluster . we will be following gitOps principle for our project where i have created 2 git repository  i.e, one for application code & another for kubernetes manifests files . 
+This project is all about CICD pipeline without ArgoCD . We are going to create CICD project by simply hosting spring boot application on AWS EKS cluster . we are using push based deployment approach here . 
 
+## There are two types of deployment :-
 
+1  Push Based Deployment : Changes are directly pushed on K8S cluster 
 
+2  Pull Based Deployment : An agent is installed on K8S cluster , that agent will monitor infra git repository & as soon as there is a new commit in infra git repo , this agent will syncs all new changes to its current environment . it compares desired state & actual state .
 
 ## Git Repository For application code available at below link:
 
-https://github.com/akashzakde/spring-boot-app.git
-
-## Git Repository For K8S manifests code available at below link :
-
-https://github.com/akashzakde/k8s-manifests-repo.git
-
-Both git repository are public .
+https://github.com/akashzakde/Java_CICD_Project_EKS.git
 
 ## Tools and technology used in our project are : 
 
 -  Jenkins
 -  Git
--  MAven
+-  Maven
 -  SonarQube Scanner & Server
 -  Docker & Docker Hub Registry
--  ArgoCD
 -  AWS EKS Cluster
+  
 ## Below is our CICD Project Diagram :
 
-<img width="647" alt="CICD Project With ArgoCD diagram " src="https://github.com/akashzakde/spring-boot-app/assets/64258131/0dfa0ae0-7b5f-470a-b2cf-10821ed5bbb5">
+<img width="643" alt="CICD Project With EKS Push Based Deployment" src="https://github.com/akashzakde/Java_CICD_Project_EKS/assets/64258131/6b39e118-ac4a-488f-a846-5e3312a4eecb">
+
 
 ## Installation Steps :
 
