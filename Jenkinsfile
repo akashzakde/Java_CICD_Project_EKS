@@ -75,7 +75,7 @@ pipeline{
         }
         stage('Deploy to Kubernetes'){
             steps{
-                sh "kubectl set image deployment/${DEPLOYMENT_NAME} ${mycontainer}=${DOCKER_LOGIN_NAME}/${APP_NAME}:${IMAGE_TAG} --namespace=${K8S_NAMESPACE}"
+                sh "kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=${DOCKER_LOGIN_NAME}/${APP_NAME}:${IMAGE_TAG} --namespace=${K8S_NAMESPACE}"
             }
         }
     }
