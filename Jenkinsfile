@@ -22,12 +22,12 @@ pipeline{
         }
         stage('Code Analysis'){
             steps{
-                withSonarQubeEnv(credentialsId: 'sonarqube-creds',installationName: 'sonarqube') {
-                sh '''mvn clean verify sonar:sonar \
-                    -Dsonar.projectKey=Java-Project \
-                    -Dsonar.projectName='Java-Project' \
-                    -Dsonar.host.url=http://172.31.4.11:9000 \
-                    -Dsonar.token=sqp_156397e53f4007d40e1a790c9ffebbe0442cace1'''
+                    withSonarQubeEnv(credentialsId: 'sonarqube-creds',installationName: 'sonarqube') {
+                    sh '''mvn clean verify sonar:sonar \
+                        -Dsonar.projectKey=Java-Project \
+                        -Dsonar.projectName='Java-Project' \
+                        -Dsonar.host.url=http://172.31.4.11:9000 \
+                        -Dsonar.token=sqp_156397e53f4007d40e1a790c9ffebbe0442cace1'''
                     }
                 }
             }
@@ -73,9 +73,11 @@ pipeline{
                 '''
             }
         }
-        stage('Deploy to Kubernetes'){
+        stage('Connect EKS Cluster'){
             steps{
-                sh "kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=${DOCKER_LOGIN_NAME}/${APP_NAME}:${IMAGE_TAG} --namespace=${K8S_NAMESPACE}"
+                withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'test', contextName: '', credentialsId: 'K8S-Token', namespace: 'default', serverUrl: 'https://297E229FAC2E858DDA95E8167233433D.gr7.ap-south-1.eks.amazonaws.com']]){
+                sh 'kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=${DOCKER_LOGIN_NAME}/${APP_NAME}:${IMAGE_TAG} --namespace=${K8S_NAMESPACE}'
+                }
             }
         }
     }
