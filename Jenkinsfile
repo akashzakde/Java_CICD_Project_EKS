@@ -73,7 +73,7 @@ pipeline{
                 '''
             }
         }
-        stage('Connect EKS Cluster'){
+        stage('Deploy To EKS Cluster'){
             steps{
                 withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'test', contextName: '', credentialsId: 'K8S-Token', namespace: 'default', serverUrl: 'https://297E229FAC2E858DDA95E8167233433D.gr7.ap-south-1.eks.amazonaws.com']]){
                 sh 'kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=${DOCKER_LOGIN_NAME}/${APP_NAME}:${IMAGE_TAG} --namespace=${K8S_NAMESPACE}'
