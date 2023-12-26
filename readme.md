@@ -11,7 +11,7 @@ This project is all about CICD pipeline without ArgoCD . We are going to create 
 
 ## Git Repository For application code available at below link:
 
-https://github.com/akashzakde/Java_CICD_Project_EKS.git
+https://github.com/akashzakde/Java_CICD_Project_Kubectl.git
 
 ## Tools and technology used in our project are : 
 
