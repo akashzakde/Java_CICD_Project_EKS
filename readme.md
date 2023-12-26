@@ -33,7 +33,7 @@ Step 1 : Login to AWS management console using our email id & password
 
 Step 2 : Create Security Group For jenkins & sonarqube server , Allow port 22 , 8080 in jenkins security group & allow 22 , 9000 in sonarqube security group .
 
-Step 3 : Create Key Pair 
+Step 3 : Create Security Key Pair .
 
 Step 4 : Launch two t2.medium EC2 instances (one for jenkins & another for sonarqube server).
 
@@ -47,14 +47,12 @@ Step 8 : Login to jenkins dashbaord using url http://{jenkins-server-ip}:8080
 
 Step 9 : Install Maven Integration, Github Integration, Sonarqube Scanner plugins on jenkins .
 
-Step 10 : We need github token for pushing changes to github repo & docker hub credentials for pushing docker images to docker hub registry . please add these credentials in jenkins . 
-
 Step 10 : We need to add sonarqube server details & its credentials , add tools like maven , git & java jdk path inside jenkins.
 
 Step 11 : Now login to sonarqube server using url http://{sonarqube-server-ip}:9000 , create new project for java , create webhook for jenkins . 
 
-Step 12 : Login jenkins dashboard create 2 pipelines , One pipeline for Continuous Integration & another pipeline for Continous Delivery . Continous integration project is at https://github.com/akashzakde/spring-boot-app.git & Continous Delivery project is at https://github.com/akashzakde/k8s-manifests-repo.git
+Step 12 : We need to integrate AWS EKS cluster with our jenkins server , Inorder to integrate EKS cluster with jenkins server please follow this article : https://www.fosstechnix.com/integrate-remote-kubernetes-cluster-with-jenkins/ 
 
-Step 13 : Inorder to run our CICD pipeline automatically on new commit , we need to add webhook on our CI git repo i.e. https://github.com/akashzakde/spring-boot-app.git 
+Step 13 : Login jenkins dashboard create 1 pipeline , add this repo details for CICD pipeline code i.e. https://github.com/akashzakde/Java_CICD_Project_Kubectl.git
 
-Step 14 : Finally we need to install ArgoCD on EKS cluster & create new application with https://github.com/akashzakde/k8s-manifests-repo.git as a CD git repository .
+Step 14 : Inorder to run our CICD pipeline automatically on new commit , we need to add webhook on our git repo i.e. https://github.com/akashzakde/Java_CICD_Project_Kubectl.git
